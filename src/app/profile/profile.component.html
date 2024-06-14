@@ -1,0 +1,15 @@
+<div *ngIf="userData" class="profile-container">
+  <mat-card>
+    <mat-card-title>Profile</mat-card-title>
+    <mat-card-content>
+      <p><strong>Username:</strong> {{ userData.username }}</p>
+      <p><strong>Email:</strong> {{ userData.email }}</p>
+      <p><strong>User Number:</strong> {{ userData.userNumber }}</p>
+      <p><strong>Registration Date:</strong> {{ userData.registrationDate }}</p>
+      <p *ngIf="userData.uplineId"><strong>Upline ID:</strong> {{ userData.uplineId }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div *ngIf="!userData">
+  <p>Loading user data...</p>
+</div>
