@@ -1,34 +1,29 @@
-<div class="register-container">
+<div class="content-container">
   <mat-card>
-    <mat-card-title>Register</mat-card-title>
+    <mat-card-title>สมัครสมาชิก</mat-card-title>
     <mat-card-content>
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="fill">
-          <mat-label>Username</mat-label>
-          <input matInput formControlName="username" placeholder="Enter your username" required>
+          <mat-label>ชื่อผู้ใช้</mat-label>
+          <input matInput formControlName="username" placeholder="กรอกชื่อผู้ใช้ของคุณ" required>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" placeholder="Enter your email" required type="email">
+          <mat-label>อีเมล</mat-label>
+          <input matInput formControlName="email" placeholder="กรอกอีเมลของคุณ" required type="email">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Password</mat-label>
-          <input matInput formControlName="password" placeholder="Enter your password" required type="password">
+          <mat-label>รหัสผ่าน</mat-label>
+          <input matInput formControlName="password" placeholder="กรอกรหัสผ่านของคุณ" required type="password">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Confirm Password</mat-label>
-          <input matInput formControlName="confirmPassword" placeholder="Confirm your password" required type="password">
+          <mat-label>ยืนยันรหัสผ่าน</mat-label>
+          <input matInput formControlName="confirmPassword" placeholder="ยืนยันรหัสผ่านของคุณ" required type="password">
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Upline ID</mat-label>
-          <input matInput formControlName="uplineId" placeholder="Enter Upline ID (optional)">
-        </mat-form-field>
-
-        <button mat-raised-button color="primary" type="submit">Register</button>
+        <button mat-raised-button color="primary" type="submit">สมัครสมาชิก</button>
       </form>
     </mat-card-content>
   </mat-card>

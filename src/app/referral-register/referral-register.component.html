@@ -1,0 +1,80 @@
+<div class="content-container">
+  <mat-card class="register-card">
+    <mat-card-header>
+      <mat-card-title>สมัครสมาชิกผ่านการแนะนำ</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>รหัสผู้แนะนำ</mat-label>
+            <input matInput [value]="referralCode" disabled>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>ชื่อผู้ใช้</mat-label>
+            <input matInput formControlName="username" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>รหัสผ่าน</mat-label>
+            <input matInput formControlName="password" type="password" required>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="prefix-field">
+            <mat-label>คำนำหน้า</mat-label>
+            <input matInput formControlName="prefix" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>ชื่อ</mat-label>
+            <input matInput formControlName="firstName" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>นามสกุล</mat-label>
+            <input matInput formControlName="lastName" required>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>เพศ</mat-label>
+            <mat-select formControlName="gender" required>
+              <mat-option value="male">ชาย</mat-option>
+              <mat-option value="female">หญิง</mat-option>
+              <mat-option value="other">อื่นๆ</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>วันเดือนปีเกิด</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthdate" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>เบอร์โทร</mat-label>
+            <input matInput formControlName="phone" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>อีเมล</mat-label>
+            <input matInput formControlName="email" type="email" required>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>ชื่อ Facebook</mat-label>
+            <input matInput formControlName="facebookName">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Line ID</mat-label>
+            <input matInput formControlName="lineId">
+          </mat-form-field>
+        </div>
+        <div class="form-actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">สมัครสมาชิก</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

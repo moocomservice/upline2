@@ -1,17 +1,72 @@
-.login-container {
+.content-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #f5f5f5;
 }
 
-mat-card {
-  width: 400px;
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-name {
+  font-size: 36px;
+  font-weight: bold;
+  color: #3f51b5; /* Use your preferred color */
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
   padding: 20px;
 }
 
 mat-form-field {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.social-login {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-login p {
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-buttons button {
+  flex: 1;
+}
+
+mat-card-header {
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+mat-card-title {
+  font-size: 24px;
+  color: #333;
+}
+
+button mat-icon {
+  margin-right: 8px;
 }

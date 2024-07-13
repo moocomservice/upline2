@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
-import { Database, ref, set, get, update } from '@angular/fire/database';
+import { Database, ref, set, get } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { RegisterErrorDialogComponent } from '../register-error-dialog/register-error-dialog.component';
 import { RegisterSuccessDialogComponent } from '../register-success-dialog/register-success-dialog.component';
@@ -44,8 +44,7 @@ export class RegisterComponent {
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-      uplineId: ['']
+      confirmPassword: ['', Validators.required]
     }, { validator: this.passwordMatchValidator });
   }
 
@@ -56,7 +55,7 @@ export class RegisterComponent {
 
   async onSubmit() {
     if (this.registerForm.valid) {
-      const { email, password, username, uplineId } = this.registerForm.value;
+      const { email, password, username } = this.registerForm.value;
       console.log('Form is valid, starting registration process...');
       try {
         const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
@@ -71,7 +70,7 @@ export class RegisterComponent {
           username,
           email,
           registrationDate,
-          uplineId: uplineId || ''
+          status: 'inactive'
         });
         console.log('User data saved in database.');
 

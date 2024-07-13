@@ -1,15 +1,54 @@
-<div *ngIf="userData" class="profile-container">
-  <mat-card>
-    <mat-card-title>Profile</mat-card-title>
-    <mat-card-content>
-      <p><strong>Username:</strong> {{ userData.username }}</p>
-      <p><strong>Email:</strong> {{ userData.email }}</p>
-      <p><strong>User Number:</strong> {{ userData.userNumber }}</p>
-      <p><strong>Registration Date:</strong> {{ userData.registrationDate }}</p>
-      <p *ngIf="userData.uplineId"><strong>Upline ID:</strong> {{ userData.uplineId }}</p>
-    </mat-card-content>
+<div class="content-container">
+  <mat-card class="profile-card">
+    <div class="profile-header">
+      <div class="profile-image-container" (click)="fileInput.click()">
+        <img [src]="profileImageUrl" alt="Profile Image" class="profile-image">
+        <mat-icon class="upload-icon">add_a_photo</mat-icon>
+      </div>
+      <input #fileInput type="file" (change)="onFileSelected($event)" style="display:none">
+      <div class="profile-info">
+        <h2 *ngIf="getFullName()">{{ getFullName() }}</h2>
+        <p>{{ userData?.username }}</p>
+        <p class="membership-status">สมาชิกหมดอายุ -</p>
+        <span [ngClass]="{'status-active': userData?.status === 'active', 'status-inactive': userData?.status !== 'active'}">
+          {{ userData?.status }}
+        </span>
+      </div>
+    </div>
+    
+    <div class="user-details">
+      <div class="detail-column">
+        <p>{{ userData?.userNumber || 'N/A' }}</p>
+        <small>Member ID</small>
+      </div>
+      <div class="detail-column">
+        <p>{{ userData?.uplineId || '-' }}</p>
+        <small>Refer Member ID</small>
+      </div>
+      <div class="detail-column">
+        <p>0฿</p>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <button mat-raised-button (click)="navigateToPersonalInfo()">
+        <mat-icon>person</mat-icon>
+        ข้อมูลส่วนตัว
+      </button>
+      <button mat-raised-button (click)="navigateToReferralLink()">
+        <mat-icon>group_add</mat-icon>
+        Link สมัครสมาชิก
+      </button>
+      <button mat-raised-button (click)="navigateToShopping()">
+        <mat-icon>shopping_cart</mat-icon>
+        Link Shopping
+      </button>
+      <button mat-raised-button (click)="navigateToWithdraw()">
+        <mat-icon>account_balance_wallet</mat-icon>
+        ถอนเงิน
+      </button>
+    </div>
+
+    <button mat-raised-button color="warn" (click)="logout()" class="logout-button">ออกจากระบบ</button>
   </mat-card>
-</div>
-<div *ngIf="!userData">
-  <p>Loading user data...</p>
 </div>
